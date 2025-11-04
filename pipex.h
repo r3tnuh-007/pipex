@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/02 00:19:02 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/04 02:48:23 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	pipex(char **argv, char **envp);
 void	ft_free_split(char **strs);
 size_t	ft_strlen(const char *s);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+int		ft_access(char *path);
 
 #endif
