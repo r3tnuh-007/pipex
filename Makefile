@@ -14,6 +14,10 @@ SRCS = pipex.c\
 	   ft_putstr_fd.c\
 	   ft_memcpy.c\
 	   ft_free_split.c\
+	   handle_error.c\
+	   find_path.c\
+	   execute_command.c\
+	   pipe.c\
 
 all: $(NAME)
 
