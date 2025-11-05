@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/04 02:48:23 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/04 03:11:26 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # include <unistd.h>
+#include <sys/types.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdlib.h>

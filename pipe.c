@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/02 01:10:16 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/04 03:51:40 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	pipex(char **argv, char **envp)
 	if (outfile == -1)
 		handle_error("outfile error");
 	pid1 = fork();
+	if (WIFEXITED(pid1))//remover depois
+		return 0;
 	if (pid1 == 0)
 	{
 		close(fd[0]);
