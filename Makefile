@@ -18,7 +18,6 @@ SRCS = pipex.c\
 	   find_path.c\
 	   execute_command.c\
 	   pipe.c\
-	   ft_access.c\
 
 all: $(NAME)
 

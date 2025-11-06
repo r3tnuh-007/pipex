@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 20:28:57 by aluis             #+#    #+#             */
-/*   Updated: 2025/10/29 14:04:09 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/06 06:33:20 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (s == NULL)
+		return (0);
 	while (*s ++)
 		i ++;
 	return (i);

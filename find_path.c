@@ -6,29 +6,18 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/02 00:26:23 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/06 06:43:11 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*find_path(char *cmd, char **envp)
+static char	*join_path_cmd(char **paths, char *cmd)
 {
-	char	*path;
 	char	*dir;
 	char	*full_path;
-	char	**paths;
 	int		i;
 
-	if (access(cmd, X_OK) == 0)
-		return (ft_strdup(cmd));
-	i = 0;
-	while (envp[i] && ft_strnstr(envp[i], "PATH=", 5) == NULL)
-		i++;
-	if (!envp[i])
-		return (NULL);
-	path = envp[i] + 5;
-	paths = ft_split(path, ':');
 	i = 0;
 	while (paths[i])
 	{
@@ -45,4 +34,22 @@ char	*find_path(char *cmd, char **envp)
 	}
 	ft_free_split(paths);
 	return (NULL);
+}
+
+char	*find_path(char *cmd, char **envp)
+{
+	char	*path;
+	char	**paths;
+	int		i;
+
+	if (access(cmd, X_OK) == 0)
+		return (ft_strdup(cmd));
+	i = 0;
+	while (envp[i] && ft_strnstr(envp[i], "PATH=", 5) == NULL)
+		i++;
+	if (!envp[i])
+		return (NULL);
+	path = envp[i] + 5;
+	paths = ft_split(path, ':');
+	return (join_path_cmd(paths, cmd));
 }

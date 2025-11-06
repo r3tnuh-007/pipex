@@ -6,14 +6,14 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/10/31 11:14:44 by aluis            ###   ########.fr       */
+/*   Updated: 2025/11/06 05:04:29 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	handle_error(char *msg)
+void	handle_error(char *msg, int status)
 {
 	perror(msg);
-	exit(EXIT_FAILURE);
+	exit(status);
 }
