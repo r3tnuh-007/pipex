@@ -27,7 +27,7 @@ typedef struct s_file
 	int	status;
 }	t_file;
 
-// Funções principais
+// Funções principais do pipex
 void	execute_command(char *cmd, char **envp);
 char	*find_path(char *cmd, char **envp);
 char	*ft_strdup(const char *s);
