@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2026/02/19 19:28:42 by aluis            ###   ########.fr       */
+/*   Updated: 2026/02/19 20:56:12 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ static void	handle_pipe(t_file file, char **argv, char **envp, pid_t pid)
 	if (pid == 1)
 	{
 		close(file.fd[0]);
-		dup2(file.infile, STDIN_FILENO);
 		dup2(file.fd[1], STDOUT_FILENO);
 		close(file.fd[1]);
-		close(file.infile);
 		execute_command(argv[2], envp);
 	}
 	else if (pid == 2)
@@ -29,12 +27,11 @@ static void	handle_pipe(t_file file, char **argv, char **envp, pid_t pid)
 		dup2(file.fd[0], STDIN_FILENO);
 		dup2(file.outfile, STDOUT_FILENO);
 		close(file.fd[0]);
-		close(file.outfile);
 		execute_command(argv[3], envp);
 	}
 }
 
-static void	handle_exit(int status)
+void	handle_exit(int status)
 {
 	if (WIFEXITED(status))
 		exit(WEXITSTATUS(status));
@@ -50,12 +47,6 @@ void	pipex(char **argv, char **envp)
 
 	if (pipe(file.fd) == -1)
 		handle_error("pipe error", EXIT_FAILURE);
-	file.infile = open(argv[1], O_RDONLY);
-	if (file.infile == -1)
-		file.infile = 0;
-	file.outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (file.outfile == -1)
-		handle_error("outfile error", EXIT_FAILURE);
 	pid1 = fork();
 	if (pid1 == 0)
 		handle_pipe(file, argv, envp, 1);
