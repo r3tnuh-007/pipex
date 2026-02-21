@@ -6,7 +6,7 @@
 /*   By: aluis <aluis@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 00:16:33 by aluis             #+#    #+#             */
-/*   Updated: 2025/11/06 19:37:27 by aluis            ###   ########.fr       */
+/*   Updated: 2026/02/21 18:23:43 by aluis            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,14 @@ void	execute_command(char *cmd, char **envp)
 		ft_free_split(args);
 		handle_error("command not found", 127);
 	}
+	printf("comando a ser executado: %s\n", path);
 	if (execve(path, args, envp) == -1)
 	{
 		free(path);
 		ft_free_split(args);
 		handle_error("execve error", EXIT_FAILURE);
 	}
+	exit(EXIT_SUCCESS);
+	free(path);
+	ft_free_split(args);
 }
